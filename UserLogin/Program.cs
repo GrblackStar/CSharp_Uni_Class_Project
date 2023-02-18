@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Runtime.Intrinsics.X86;
+//using System.Runtime.Intrinsics.X86;
 
 namespace UserLogin
 {
@@ -41,7 +41,7 @@ namespace UserLogin
 
 
             //LoginValidation loginValidation = new LoginValidation(Console.ReadLine(), Console.ReadLine());
-            LoginValidation loginValidation = new LoginValidation(usernameInput, passwordInput);
+            LoginValidation loginValidation = new LoginValidation(usernameInput, passwordInput, HandleErrorMessage);
             if (loginValidation.ValidateUserInput(ref user))
             {
                 // prints the name of the class
@@ -77,5 +77,13 @@ namespace UserLogin
 
 
         }
+
+
+
+        public static void HandleErrorMessage(string errormessage)
+        {
+            Console.WriteLine("!!! " + errormessage + " !!!");
+        }
+
     }
 }
