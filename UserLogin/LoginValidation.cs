@@ -9,6 +9,8 @@ namespace UserLogin
     internal class LoginValidation
     {
         public static UserRoles currentUserRole { get; private set; }
+        public static string currentUserUsername { get; private set; }
+        
 
         private string Username;
         private string Password;
@@ -40,6 +42,7 @@ namespace UserLogin
                 //ErrorDelegate?.Invoke(ErrorMessage);
                 ErrorDelegate(ErrorMessage);
                 currentUserRole = UserRoles.ANONYMOUS;
+                currentUserUsername = string.Empty;
                 return false;
             }
             if(Password.Equals(String.Empty))
@@ -49,6 +52,7 @@ namespace UserLogin
                 //ErrorDelegate?.Invoke(ErrorMessage);
                 ErrorDelegate(ErrorMessage);
                 currentUserRole = UserRoles.ANONYMOUS;
+                currentUserUsername = string.Empty;
                 return false;
             }
             if (Username.Length < 5)
@@ -58,6 +62,7 @@ namespace UserLogin
                 //ErrorDelegate?.Invoke(ErrorMessage);
                 ErrorDelegate(ErrorMessage);
                 currentUserRole = UserRoles.ANONYMOUS;
+                currentUserUsername = string.Empty;
                 return false;
             }
             if (Password.Length < 5)
@@ -67,6 +72,7 @@ namespace UserLogin
                 //ErrorDelegate?.Invoke(ErrorMessage);
                 ErrorDelegate(ErrorMessage);
                 currentUserRole = UserRoles.ANONYMOUS;
+                currentUserUsername = string.Empty;
                 return false;
             }
             if (UserData.IsUserPassCorrect(Username, Password) == null)
@@ -76,12 +82,15 @@ namespace UserLogin
                 //ErrorDelegate?.Invoke(ErrorMessage);
                 ErrorDelegate(ErrorMessage);
                 currentUserRole = UserRoles.ANONYMOUS;
+                currentUserUsername = string.Empty;
                 return false;
             }
             if (UserData.IsUserPassCorrect(Username, Password) != null)
             {
                 user = UserData.IsUserPassCorrect(Username, Password);
                 currentUserRole = (UserRoles)user.role;
+                currentUserUsername = Username;
+                Logger.LogActivity("Successful Login");
                 return true;
             }
             
