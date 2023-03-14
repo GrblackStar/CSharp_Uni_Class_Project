@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 using System.Text.RegularExpressions;
 //using System.Runtime.Intrinsics.X86;
 
@@ -265,11 +267,27 @@ namespace UserLogin
             }
             else if (chosenItem == 4)
             {
-                Console.WriteLine(Logger.PrintLogFile("logActivity.txt"));
+                //Console.WriteLine(Logger.PrintLogFile("logActivity.txt"));
+                StringBuilder sb = new StringBuilder();
+                IEnumerable<string> currentActs = Logger.PrintLogFile("logActivity.txt");
+                foreach (string line in currentActs)
+                {
+                    sb.AppendLine(line);
+                }
+                Console.WriteLine(sb.ToString());
+
             }
             else if (chosenItem == 5)
             {
-                Console.WriteLine(Logger.GetCurrentSessionActivities());
+                //Console.WriteLine(Logger.GetCurrentSessionActivities());
+                StringBuilder sb = new StringBuilder();
+                Console.Write("Choose a filter:  ");
+                IEnumerable<string> currentActs = Logger.GetCurrentSessionActivities(Console.ReadLine());
+                foreach (string line in currentActs)
+                {
+                    sb.Append(line);
+                }
+                Console.WriteLine(sb.ToString());
             }
 
 

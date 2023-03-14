@@ -12,6 +12,10 @@ namespace UserLogin
     {
         static private List<string> currentSessionActivities = new List<string>();
 
+
+        #region Methods
+
+
         static public void LogActivity(Activities activity, string username)
         {
             string activityLine = DateTime.Now + ";  "
@@ -28,8 +32,17 @@ namespace UserLogin
 
         }
 
-        public static string PrintLogFile(string filePath)
+        public static IEnumerable<string> PrintLogFile(string filePath)
         {
+            using (StreamReader reader = new StreamReader(filePath))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    yield return line;
+                }
+            }
+            /*
             //  the using statement is used to ensure that the StreamReader is properly disposed of when we're done with it.
             StringBuilder sb = new StringBuilder();
             using (StreamReader reader = new StreamReader(filePath))
@@ -41,9 +54,9 @@ namespace UserLogin
                 }
             }
             return sb.ToString();
-
+            
             // alternatively:
-            /*
+            
             StreamReader reader = new StreamReader(filePath);
             string line;
             while ((line = reader.ReadLine()) != null)
@@ -52,17 +65,26 @@ namespace UserLogin
             }
             reader.Close();
             */
+            
         }
 
-        public static string GetCurrentSessionActivities()
+        public static IEnumerable<string> GetCurrentSessionActivities(string filter)
         {
-            StringBuilder sb = new StringBuilder();
-            foreach (string activityLine in currentSessionActivities)
-            {
-                sb.AppendLine(activityLine);
-            }
+            /*
+            // Вместо да предоставим на ползвателя на класа Logger монолитен string, е по- редно да му предоставим 
+            // данните в структуриран вид. Ако ползвателя трябва да формира един string от тях, то отговорността как
+            // ще го направи остава негова
+            // making the return type to IEnumerable<string>
+            */
+            /*
+            List<string> filteredActivities = (from activity in currentSessionActivities
+                                               where activity.Contains(filter)
+                                               select activity).ToList();
+            */
 
-            return sb.ToString();
+            List<string> filteredActivities = currentSessionActivities.Where(activity => activity.Contains(filter)).ToList();
+
+            return filteredActivities;
         }
 
         public static string ActivityProvides(Activities activity, string username)
@@ -85,5 +107,8 @@ namespace UserLogin
             return message;
         }
 
+
+
+        #endregion
     }
 }

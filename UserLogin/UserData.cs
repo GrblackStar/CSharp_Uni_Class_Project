@@ -10,6 +10,7 @@ namespace UserLogin
     // static -> cannot be instanciated
     internal static class UserData
     {
+        #region Properties
         private static List<User> testUser;
         public static List<User> TestUsers 
         { 
@@ -17,7 +18,11 @@ namespace UserLogin
             set { } 
         }
 
-        
+        #endregion
+
+
+
+        #region Methods
         private static void ResetTestUserData()
         {
             if(testUser == null)
@@ -86,12 +91,17 @@ namespace UserLogin
 
         public static User IsUserPassCorrect(string username, string password)
         {
+            User user = TestUsers.FirstOrDefault(u => u.username == username && u.password == password);
+
+            return user;
+            /*
             foreach(var user in TestUsers)
             {
                 if (user.username == username && user.password == password)
                     return user;
             }
             return null;
+            */
         }
 
         public static void SetUserActiveTo(Activities activity, string username, DateTime activetill)
@@ -133,7 +143,7 @@ namespace UserLogin
         }
 
 
-
+        #endregion
 
 
     }
