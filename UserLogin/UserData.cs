@@ -94,7 +94,7 @@ namespace UserLogin
             return null;
         }
 
-        public static void SetUserActiveTo(string username, DateTime activetill)
+        public static void SetUserActiveTo(Activities activity, string username, DateTime activetill)
         {
             /*
             User user = testUser.Where(u => u.username == username).FirstOrDefault();
@@ -110,13 +110,14 @@ namespace UserLogin
                 if (testUser[i].username == username)
                 {
                     testUser[i].ActiveTill = activetill;
-                    Logger.LogActivity("Cganging the activity of " + username);
+                    Logger.LogActivity(activity, username);
+                    Console.WriteLine(Logger.ActivityProvides(activity, username));
                 }
 
             }
         }
 
-        public static void AssignUserRole(string username, UserRoles role)
+        public static void AssignUserRole(Activities activity, string username, UserRoles role)
         {
             for (int i = 0; i < testUser.Count; i++)
             {
@@ -124,7 +125,8 @@ namespace UserLogin
                 if (testUser[i].username == username)
                 {
                     testUser[i].role = (int)role;
-                    Logger.LogActivity("Cganging the role of " + username);
+                    Logger.LogActivity(activity, username);
+                    Console.WriteLine(Logger.ActivityProvides(activity, username));
                 }
 
             }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -11,12 +12,12 @@ namespace UserLogin
     {
         static private List<string> currentSessionActivities = new List<string>();
 
-        static public void LogActivity(string activity)
+        static public void LogActivity(Activities activity, string username)
         {
             string activityLine = DateTime.Now + ";  "
                 + LoginValidation.currentUserUsername + ";  "
                 + LoginValidation.currentUserRole + ";  "
-                + activity;
+                + ActivityProvides(activity, username);
             currentSessionActivities.Add(activityLine);
 
             string logFilePath = "logActivity.txt";
@@ -64,7 +65,25 @@ namespace UserLogin
             return sb.ToString();
         }
 
+        public static string ActivityProvides(Activities activity, string username)
+        {
+            string message = String.Empty;
+            // for every role, to write what the log does
+            if (activity == Activities.UserLogin)
+            {
+                message = "User loged in";
+            }
+            else if (activity == Activities.UserChanged)
+            {
+                message = "Changing user " + username;
+            }
+            else if (activity == Activities.UserActiveToChange)
+            {
+                message = "Changing activity of " + username;
+            }
 
+            return message;
+        }
 
     }
 }

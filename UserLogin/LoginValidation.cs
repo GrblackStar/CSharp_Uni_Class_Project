@@ -8,6 +8,7 @@ namespace UserLogin
 {
     internal class LoginValidation
     {
+        #region Fields
         public static UserRoles currentUserRole { get; private set; }
         public static string currentUserUsername { get; private set; }
         
@@ -20,14 +21,17 @@ namespace UserLogin
         private ActionOnError ErrorDelegate;
 
 
+        #endregion
+
+
+
+        #region Methods
         public LoginValidation (string username, string password, ActionOnError errorDelegate)
         {
             Username = username;
             Password = password;
             ErrorDelegate = errorDelegate;
         }
-
-
 
         public bool ValidateUserInput (ref User user) 
         {
@@ -90,13 +94,17 @@ namespace UserLogin
                 user = UserData.IsUserPassCorrect(Username, Password);
                 currentUserRole = (UserRoles)user.role;
                 currentUserUsername = Username;
-                Logger.LogActivity("Successful Login");
+                Logger.LogActivity(Activities.UserLogin, Username);
                 return true;
             }
             
 
             return true;
         }
+
+
+
+        #endregion
 
     }
 }

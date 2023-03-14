@@ -166,7 +166,7 @@ namespace UserLogin
                 }
 
 
-                UserData.AssignUserRole(username, newrole);
+                UserData.AssignUserRole(Activities.UserChanged, username, newrole);
 
 
             }
@@ -256,7 +256,7 @@ namespace UserLogin
 
                 DateTime newdate = new DateTime(day, month, year);
 
-                UserData.SetUserActiveTo(username, newdate);
+                UserData.SetUserActiveTo(Activities.UserActiveToChange, username, newdate);
 
             }
             else if (chosenItem == 3)

@@ -8,4 +8,12 @@
         PROFESSOR = 3, 
         STUDENT = 4
     }
+
+
+    enum Activities
+    {
+        UserLogin = 0,
+        UserChanged = 1,
+        UserActiveToChange = 2
+    }
 }
