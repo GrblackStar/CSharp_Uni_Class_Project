@@ -6,14 +6,17 @@ using System.Threading.Tasks;
 
 namespace StudentInfoSystem
 {
-    internal class StudentData
+    internal static class StudentData
     {
-        public static List<Student> TestStudents { get; private set; }
+        public static List<Student> TestStudents { get; private set; } = new List<Student>();
 
-        public StudentData()
+        // a static constructor runs at the beggining of the program
+        static StudentData()
         {
-            TestStudents = new List<Student>();
+            //TestStudents = new List<Student>();
             AddStudent(newStudent);
+            AddStudent(newStudent1);
+            AddStudent(newStudent2);
             /*
                 StudentData data = new StudentData();
                 Student student = new Student();
@@ -26,7 +29,7 @@ namespace StudentInfoSystem
 
 
         // Create a new student object for the example
-        Student newStudent = new Student
+        static Student newStudent = new Student
         {
             name = "John",
             surname = "John",
@@ -40,8 +43,38 @@ namespace StudentInfoSystem
             potok = 10,
             group = 43
         };
-       
-        public void AddStudent(Student student)
+
+        static Student newStudent1 = new Student
+        {
+            name = "John",
+            surname = "John",
+            familyname = "John",
+            faculty = "Faculty of Computer Science",
+            specialty = "Computer Science",
+            qualificationDegree = "Bachelor",
+            statusOfStudying = "Enrolled",
+            facultyNumber = "1234",
+            course = 2,
+            potok = 10,
+            group = 43
+        };
+
+        static Student newStudent2 = new Student
+        {
+            name = "John",
+            surname = "John",
+            familyname = "John",
+            faculty = "Faculty of Computer Science",
+            specialty = "Computer Science",
+            qualificationDegree = "Bachelor",
+            statusOfStudying = "Enrolled",
+            facultyNumber = "123",
+            course = 2,
+            potok = 10,
+            group = 43
+        };
+
+        public static void AddStudent(Student student)
         {
             TestStudents.Add(student);
         }

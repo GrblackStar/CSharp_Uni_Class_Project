@@ -36,5 +36,6 @@
         <Button x:Name="showStudentButton" Content="ПОКАЖИ СТУДЕНТ" HorizontalAlignment="Left" Margin="648,211,0,0" VerticalAlignment="Top" Width="130" Click="showStudentButton_Click"/>
         <Button x:Name="deactivateAllFieldsButton" Content="ДЕАКТИВИРАЙ ВСИЧКИ ПОЛЕТА" HorizontalAlignment="Left" Margin="375,385,0,0" VerticalAlignment="Top" Width="200" Click="deactivateAllFieldsButton_Click"/>
         <Button x:Name="activateAllFieldsButton" Content="АКТИВИРАЙ ВСИЧКИ ПОЛЕТА" HorizontalAlignment="Left" Margin="582,385,0,0" VerticalAlignment="Top" Width="185" Click="activateAllFieldsButton_Click" Height="20"/>
+        <Button x:Name="loginButton" Content="LOGIN" HorizontalAlignment="Left" Margin="648,245,0,0" VerticalAlignment="Top" Width="130" Click="loginButton_Click"/>
     </Grid>
 </Window>
