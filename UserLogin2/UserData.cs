@@ -33,7 +33,7 @@ namespace UserLogin
                 {
                     username = "namefirst",
                     password = "passfirst",
-                    number = "78626",
+                    number = 78626,
                     role = 1,
                     Created = DateTime.Now,
                     ActiveTill = DateTime.MaxValue
@@ -43,7 +43,7 @@ namespace UserLogin
                 {
                     username = "namesecond",
                     password = "passsecond",
-                    number = "78626",
+                    number = 78626,
                     role = 4,
                     Created = DateTime.Now,
                     ActiveTill = DateTime.MaxValue
@@ -53,7 +53,7 @@ namespace UserLogin
                 {
                     username = "namethird",
                     password = "passthird",
-                    number = "78626",
+                    number = 78626,
                     role = 4,
                     Created = DateTime.Now,
                     ActiveTill = DateTime.MaxValue

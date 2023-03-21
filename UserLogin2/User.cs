@@ -13,7 +13,7 @@ namespace UserLogin
 
         public string username { get; set; }
         public string password { get; set; }
-        public string number { get; set; }
+        public int number { get; set; }
         public int role { get; set; }
         public DateTime Created { get; set; }
         public DateTime ActiveTill { get; set; }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -64,7 +65,7 @@ namespace UserLogin
             }
             reader.Close();
             */
-
+            
         }
 
         public static IEnumerable<string> GetCurrentSessionActivities(string filter)

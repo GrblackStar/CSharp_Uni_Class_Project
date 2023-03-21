@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Text.RegularExpressions;
+//using System.Runtime.Intrinsics.X86;
 
 namespace UserLogin
 {
@@ -40,7 +39,7 @@ namespace UserLogin
             string passNameInput = Console.ReadLine();
             if (passNameInput.Contains(' '))
             {
-                string[] input = passNameInput.Split(' ', (char)StringSplitOptions.RemoveEmptyEntries);
+                string[] input = passNameInput.Split(' ', StringSplitOptions.RemoveEmptyEntries);
                 usernameInput = input[0];
                 passwordInput = input[1];
             }
@@ -50,7 +49,7 @@ namespace UserLogin
                 passwordInput = Console.ReadLine();
             }
 
-
+            
 
             User user = null;
 
@@ -63,7 +62,7 @@ namespace UserLogin
                 //Console.WriteLine(UserData.TestUser);
                 //Console.WriteLine(UserData.TestUser.username + " " + UserData.TestUser.password + " " + UserData.TestUser.number + " " + UserData.TestUser.role);
                 Console.WriteLine(user.username + " " + user.password + " " + user.number + " " + user.role + " " + user.Created);
-
+                
                 switch (LoginValidation.currentUserRole)
                 {
                     case UserRoles.ADMIN:
@@ -85,7 +84,7 @@ namespace UserLogin
                     default:
                         break;
                 }
-
+                
                 //Console.WriteLine(LoginValidation.currentUserRole);
             }
 
@@ -190,7 +189,7 @@ namespace UserLogin
                 {
                     if (input.Contains(".") && !input.Contains("/") && !input.Contains("-"))
                     {
-                        inputArguments = input.Split('.', (char)StringSplitOptions.RemoveEmptyEntries);
+                        inputArguments = input.Split(".", StringSplitOptions.RemoveEmptyEntries);
                         day = int.Parse(inputArguments[0]);
                         month = int.Parse(inputArguments[1]);
                         year = int.Parse(inputArguments[2]);
@@ -198,7 +197,7 @@ namespace UserLogin
                     }
                     else if (input.Contains("/") && !input.Contains(".") && !input.Contains("-"))
                     {
-                        inputArguments = input.Split('/', (char)StringSplitOptions.RemoveEmptyEntries);
+                        inputArguments = input.Split("/", StringSplitOptions.RemoveEmptyEntries);
                         day = int.Parse(inputArguments[0]);
                         month = int.Parse(inputArguments[1]);
                         year = int.Parse(inputArguments[2]);
@@ -206,7 +205,7 @@ namespace UserLogin
                     }
                     else if (input.Contains("-") && !input.Contains(".") && !input.Contains("/"))
                     {
-                        inputArguments = input.Split('-', (char)StringSplitOptions.RemoveEmptyEntries);
+                        inputArguments = input.Split("-", StringSplitOptions.RemoveEmptyEntries);
                         day = int.Parse(inputArguments[0]);
                         month = int.Parse(inputArguments[1]);
                         year = int.Parse(inputArguments[2]);
