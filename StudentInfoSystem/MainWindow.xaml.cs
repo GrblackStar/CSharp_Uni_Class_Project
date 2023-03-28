@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace StudentInfoSystem
 {
@@ -22,14 +24,82 @@ namespace StudentInfoSystem
     public partial class MainWindow : Window
     {
         public bool logged = false;
+        public List<string> StudStatusChoices { get; set; }
+        private StudentInfoContext context = new StudentInfoContext();
+
 
         public MainWindow()
         {
             InitializeComponent();
-
+            FillStudStatusChoices();
+            if (TestStudentsIfEmpty())
+            {
+                CopyTestStudents();
+            }
             // this.Title = "Студентска информационна система";
+            StudentInfoContext context = new StudentInfoContext();
 
         }
+
+
+        private void FillStudStatusChoices()
+        {
+            // initializing the list
+            StudStatusChoices = new List<string>();
+
+            // connection to DB:
+            using (IDbConnection connection = new SqlConnection(Properties.Settings.Default.StudentInfoDatabaseConnectionString))
+            {
+                string sqlquery = @"SELECT StatusDescr FROM StudStatus";
+                IDbCommand command = new SqlCommand();
+                command.Connection = connection;
+                connection.Open();
+                command.CommandText = sqlquery;
+                IDataReader reader = command.ExecuteReader();
+                bool notEndOfResult;
+                notEndOfResult = reader.Read();
+                while (notEndOfResult)
+                {
+                    // GetString(0) --->>>> there is only one collumn in the table
+                    string s = reader.GetString(0);
+                    StudStatusChoices.Add(s);
+                    notEndOfResult = reader.Read();
+                }
+            }
+
+            //statusText.Text = StudStatusChoices.FirstOrDefault();
+
+        }
+        public bool TestStudentsIfEmpty()
+        {
+            using (var context = new StudentInfoContext())
+            {
+                var queryStudents = context.Students;
+                int countStudents = queryStudents.Count();
+
+                if (countStudents == 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+        public void CopyTestStudents()
+        {
+            using (var context = new StudentInfoContext())
+            {
+                foreach (Student st in StudentData.TestStudents)
+                {
+                    context.Students.Add(st);
+                }
+
+                context.SaveChanges();
+            }
+        }
+
 
         // add new object of type Student
         /*Добавете публично свойство на MainWindow от тип Student. 
@@ -56,7 +126,7 @@ namespace StudentInfoSystem
         private void showStudentButton_Click(object sender, RoutedEventArgs e)
         {
             Student student = StudentData.TestStudents[0];
-            
+
             firstNameText.Text = student.familyname;
             middleNameText.Text = student.surname;
             lastNameText.Text = student.familyname;
@@ -135,7 +205,7 @@ namespace StudentInfoSystem
                 logged = false;
             }
 
-            
+
             //logged = true;
             //Logout(logged);
         }

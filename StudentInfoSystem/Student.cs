@@ -19,6 +19,25 @@ namespace StudentInfoSystem
         public int course { get; set; }
         public int potok { get; set; }
         public int group { get; set; }
+        public int StudentId { get; set; }
 
+
+        public Student() { }
+        public Student(string name, string surname, string familyname, string faculty, string specialty, string qualificationDegree, string statusOfStudying, string facultyNumber, int course, int potok, int group, int studentId)
+        {
+            this.name = name;
+            this.surname = surname;
+            this.familyname = familyname;
+            this.faculty = faculty;
+            this.specialty = specialty;
+            this.qualificationDegree = qualificationDegree;
+            this.statusOfStudying = statusOfStudying;
+            this.facultyNumber = facultyNumber;
+            this.course = course;
+            this.potok = potok;
+            this.group = group;
+            StudentId = studentId;
+        }
+        
     }
 }

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace StudentInfoSystem.Properties {
+namespace UserLogin.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -26,8 +26,9 @@ namespace StudentInfoSystem.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\StudentInfoDa" +
-            "tabase.mdf;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\ThinkPad W541\\Docum" +
+            "ents\\GitHub\\C#_Exercises\\PS_43_Hristiana\\StudentInfoSystem\\StudentInfoDatabase.m" +
+            "df\";Integrated Security=True")]
         public string StudentInfoDatabaseConnectionString {
             get {
                 return ((string)(this["StudentInfoDatabaseConnectionString"]));

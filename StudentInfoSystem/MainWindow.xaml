@@ -23,7 +23,8 @@
         <TextBox x:Name="facultyText" HorizontalAlignment="Left" Margin="129,196,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
         <TextBox x:Name="specialtyText" HorizontalAlignment="Left" Margin="129,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
         <TextBox x:Name="educationDegreeText" HorizontalAlignment="Left" Margin="129,276,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
-        <TextBox x:Name="statusText" HorizontalAlignment="Left" Margin="129,314,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+        <ComboBox x:Name="statusText" HorizontalAlignment="Left" Margin="129,314,0,0" VerticalAlignment="Top" Width="200"
+                  ItemsSource="{Binding RelativeSource = {RelativeSource AncestorType={x:Type Window}}, Path=StudStatusChoices}"/>
         <TextBox x:Name="facultyNumberText" HorizontalAlignment="Left" Margin="129,352,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
         <Label Content="Курс:" HorizontalAlignment="Left" Height="32" Margin="413,0,0,0" VerticalAlignment="Center" Width="95"/>
         <Label Content="Поток:" HorizontalAlignment="Left" Height="32" Margin="413,229,0,0" VerticalAlignment="Top" Width="95"/>
