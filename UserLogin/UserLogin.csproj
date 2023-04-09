@@ -65,11 +65,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="StudentInfoDatabaseDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StudentInfoDatabaseDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="User.cs" />
     <Compile Include="UserContext.cs" />
     <Compile Include="UserData.cs" />
@@ -81,17 +76,6 @@
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="StudentInfoDatabaseDataSet.xsc">
-      <DependentUpon>StudentInfoDatabaseDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="StudentInfoDatabaseDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>StudentInfoDatabaseDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="StudentInfoDatabaseDataSet.xss">
-      <DependentUpon>StudentInfoDatabaseDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

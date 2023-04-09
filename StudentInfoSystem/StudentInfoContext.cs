@@ -17,11 +17,12 @@ namespace StudentInfoSystem
         //DbSet наследява IEnumerable.
         public DbSet<Student> Students { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Grade> Grades { get; set; }
 
         // the base can take in connection to the DB
         //Ако не подадем параметър EF ще създаде нова база на локалния сървър вграден във 
         //Visual Studio.Посочвайки известна база на самостоятелен SQL Server, ще може да следим какво се случва в нея.
-        public StudentInfoContext() : base(Properties.Settings.Default.StudentInfoDatabaseConnectionString)
+        public StudentInfoContext() : base(Properties.Settings.Default.DbConnect)
         {
             {
                 bool TestStudentsIfEmpty()
@@ -53,7 +54,9 @@ namespace StudentInfoSystem
                         context.SaveChanges();
                     }
                 }
+                
             }
         }
+
     }
 }

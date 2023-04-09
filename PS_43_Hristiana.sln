@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserLogin", "UserLogin\User
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFhello", "WPFhello\WPFhello.csproj", "{09ECFB33-AB18-4763-9930-640AE37053F8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Expenselt", "Expenselt\Expenselt.csproj", "{E7E8DFC8-5F64-409A-9338-13AC44490B46}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{09ECFB33-AB18-4763-9930-640AE37053F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09ECFB33-AB18-4763-9930-640AE37053F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09ECFB33-AB18-4763-9930-640AE37053F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7E8DFC8-5F64-409A-9338-13AC44490B46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7E8DFC8-5F64-409A-9338-13AC44490B46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7E8DFC8-5F64-409A-9338-13AC44490B46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7E8DFC8-5F64-409A-9338-13AC44490B46}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

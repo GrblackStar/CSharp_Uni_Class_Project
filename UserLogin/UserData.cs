@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 //using System.Runtime.Intrinsics.X86;
 //using System.Text;
 //using System.Threading.Tasks;
@@ -91,9 +92,14 @@ namespace UserLogin
 
         public static User IsUserPassCorrect(string username, string password)
         {
-            User user = TestUsers.FirstOrDefault(u => u.username == username && u.password == password);
+            //User user = TestUsers.FirstOrDefault(u => u.username == username && u.password == password);
 
-            return user;
+            using (var context = new UserContext())
+            {
+                return context.Users.FirstOrDefault(user => user.username == username && user.password == password);
+            }
+
+            //return user;
             /*
             foreach(var user in TestUsers)
             {
@@ -113,7 +119,17 @@ namespace UserLogin
                 user.ActiveTill = activetill;
             }
             */
-
+            using (var context = new UserContext())
+            {
+                var user = context.Users.FirstOrDefault(u => u.username == username);
+                if (user != null)
+                {
+                    user.ActiveTill = activetill;
+                    Logger.LogActivity(activity, username);
+                    context.SaveChanges();
+                }
+            }
+            /*
             for (int i = 0; i < testUser.Count; i++)
             {
                 
@@ -125,10 +141,22 @@ namespace UserLogin
                 }
 
             }
+            */
         }
 
         public static void AssignUserRole(Activities activity, string username, UserRoles role)
         {
+            using (var context = new UserContext())
+            {
+                var user = context.Users.FirstOrDefault(u => u.username == username);
+                if (user != null)
+                {
+                    user.role = (int)role;
+                    Logger.LogActivity(activity, username);
+                    context.SaveChanges();
+                }
+            }
+            /*
             for (int i = 0; i < testUser.Count; i++)
             {
 
@@ -140,6 +168,8 @@ namespace UserLogin
                 }
 
             }
+            */
+
         }
 
 

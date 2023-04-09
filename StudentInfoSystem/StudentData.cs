@@ -79,5 +79,18 @@ namespace StudentInfoSystem
             TestStudents.Add(student);
         }
 
+        public static Student IsThereStudent(string facNum)
+        {
+            StudentInfoContext context = new StudentInfoContext();
+            Student result = (from st in context.Students
+                              where st.facultyNumber == facNum
+                              select st).First();
+            if (result == null)
+            {
+                Console.WriteLine("error");
+            }
+            return result;
+        }
+
     }
 }

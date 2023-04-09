@@ -29,10 +29,17 @@
         <Label Content="Курс:" HorizontalAlignment="Left" Height="32" Margin="413,0,0,0" VerticalAlignment="Center" Width="95"/>
         <Label Content="Поток:" HorizontalAlignment="Left" Height="32" Margin="413,229,0,0" VerticalAlignment="Top" Width="95"/>
         <Label Content="Група:" HorizontalAlignment="Left" Height="32" Margin="413,260,0,0" VerticalAlignment="Top" Width="95"/>
+        <Label Content="Оценка:" HorizontalAlignment="Left" Height="32" Margin="413,290,0,0" VerticalAlignment="Top" Width="95"/>
+        <Label Content="Student ID:" HorizontalAlignment="Left" Height="32" Margin="628,275,0,0" VerticalAlignment="Top" Width="94"/>
+        <Label Content="Subject:" HorizontalAlignment="Left" Height="32" Margin="413,318,0,0" VerticalAlignment="Top" Width="95"/>
+        <TextBox x:Name="studentIdText" HorizontalAlignment="Left" Margin="712,279,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="66"/>
+        <TextBox x:Name="subjectText" HorizontalAlignment="Left" Margin="489,327,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
         <TextBox x:Name="courseText" HorizontalAlignment="Left" Margin="489,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="50"/>
+        <TextBox x:Name="valueText" HorizontalAlignment="Left" Margin="489,297,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
         <TextBox x:Name="potokText" HorizontalAlignment="Left" Margin="489,235,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
         <TextBox x:Name="groupText" HorizontalAlignment="Left" Margin="489,266,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
         <GroupBox Header="Студентска информация" Margin="0,160,0,0"/>
+        <Button x:Name="addButton" Content="Добави оценка" HorizontalAlignment="Left" Margin="582,355,0,0" VerticalAlignment="Top" Width="186" Click="AddGradeButton_Click" Height="20" RenderTransformOrigin="0.497,2.792"/>
         <Button x:Name="clearAllButton" Content="ИЗЧИСТИ" HorizontalAlignment="Left" Margin="648,181,0,0" VerticalAlignment="Top" Width="130" Click="clearAllButton_Click"/>
         <Button x:Name="showStudentButton" Content="ПОКАЖИ СТУДЕНТ" HorizontalAlignment="Left" Margin="648,211,0,0" VerticalAlignment="Top" Width="130" Click="showStudentButton_Click"/>
         <Button x:Name="deactivateAllFieldsButton" Content="ДЕАКТИВИРАЙ ВСИЧКИ ПОЛЕТА" HorizontalAlignment="Left" Margin="375,385,0,0" VerticalAlignment="Top" Width="200" Click="deactivateAllFieldsButton_Click"/>

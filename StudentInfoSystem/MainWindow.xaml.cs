@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data;
 using System.Data.SqlClient;
+using UserLogin;
 
 namespace StudentInfoSystem
 {
@@ -38,7 +39,7 @@ namespace StudentInfoSystem
             }
             // this.Title = "Студентска информационна система";
             StudentInfoContext context = new StudentInfoContext();
-
+            UserContext userContext = new UserContext();
         }
 
 
@@ -48,7 +49,7 @@ namespace StudentInfoSystem
             StudStatusChoices = new List<string>();
 
             // connection to DB:
-            using (IDbConnection connection = new SqlConnection(Properties.Settings.Default.StudentInfoDatabaseConnectionString))
+            using (IDbConnection connection = new SqlConnection(Properties.Settings.Default.DbConnect))
             {
                 string sqlquery = @"SELECT StatusDescr FROM StudStatus";
                 IDbCommand command = new SqlCommand();
@@ -210,5 +211,42 @@ namespace StudentInfoSystem
             //Logout(logged);
         }
 
+
+        private void AddGradeButton_Click(object sender, RoutedEventArgs e)
+        {
+            int studentId;
+
+            string subject = subjectText.Text;
+            int value;
+            if(subjectText.Text == String.Empty  || valueText.Text == String.Empty)
+            {
+                MessageBox.Show("Невалидна стойност.");
+                return;
+            }
+            foreach (char c in valueText.Text)
+            {
+                if (char.IsLetter(c) || char.IsWhiteSpace(c))
+                {
+                    MessageBox.Show("Невалидна стойност.");
+                    return;
+                }
+            }
+            foreach (char c in studentIdText.Text)
+            {
+                if (char.IsLetter(c) || char.IsWhiteSpace(c))
+                {
+                    MessageBox.Show("Невалидна стойност.");
+                    return;
+                }
+            }
+
+            value = int.Parse(valueText.Text);
+            studentId = int.Parse(studentIdText.Text);
+
+
+            Grade.AddGradeToDatabase(studentId, value, subject);
+
+            MessageBox.Show("Оценката е добавена успешно.");
+        }
     }
 }
