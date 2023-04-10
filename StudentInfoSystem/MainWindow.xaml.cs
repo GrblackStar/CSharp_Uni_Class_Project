@@ -29,6 +29,7 @@ namespace StudentInfoSystem
         private StudentInfoContext context = new StudentInfoContext();
 
 
+
         public MainWindow()
         {
             InitializeComponent();
@@ -40,6 +41,7 @@ namespace StudentInfoSystem
             // this.Title = "Студентска информационна система";
             StudentInfoContext context = new StudentInfoContext();
             UserContext userContext = new UserContext();
+            
         }
 
 
@@ -165,6 +167,7 @@ namespace StudentInfoSystem
 
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {
+            /*
             //logged = true;
             if (!logged)
             {
@@ -209,6 +212,40 @@ namespace StudentInfoSystem
 
             //logged = true;
             //Logout(logged);
+            */
+
+            //open new window to verify:
+
+            LoginViewModel viewModel = new LoginViewModel();
+
+            UserAndPassWindow userpasswindowInstance = new UserAndPassWindow(viewModel);
+            // IF ITS JUST SHOW, TWO SEPARATE THREADS ARE CREATED
+            // SHOWDIALOG, DEACTIVATES THE PREVIOUS WINDOW 
+            userpasswindowInstance.ShowDialog();
+
+
+            StudentInfoContext context = new StudentInfoContext();
+
+            string facNum = viewModel.FacNum;
+            Console.WriteLine(facNum);
+            foreach (Student student in context.Students)
+            {
+                if(student.facultyNumber == facNum)
+                {
+                    firstNameText.Text = student.familyname;
+                    middleNameText.Text = student.surname;
+                    lastNameText.Text = student.familyname;
+                    facultyText.Text = student.faculty;
+                    specialtyText.Text = student.specialty;
+                    educationDegreeText.Text = student.qualificationDegree;
+                    statusText.Text = student.statusOfStudying;
+                    facultyNumberText.Text = student.facultyNumber;
+                    courseText.Text = student.course.ToString();
+                    potokText.Text = student.potok.ToString();
+                    groupText.Text = student.group.ToString();
+                }
+            }
+
         }
 
 

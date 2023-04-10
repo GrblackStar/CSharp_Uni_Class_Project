@@ -32,6 +32,11 @@ namespace UserLogin
             Password = password;
             ErrorDelegate = errorDelegate;
         }
+        public LoginValidation(string username, string password)
+        {
+            Username = username;
+            Password = password;
+        }
 
         public bool ValidateUserInput (ref User user) 
         {

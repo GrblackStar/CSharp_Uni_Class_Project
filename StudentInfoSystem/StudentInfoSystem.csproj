@@ -84,6 +84,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Grade.cs" />
+    <Compile Include="LoginViewModel.cs" />
     <Compile Include="Migrations\202304061154348_InitialOne.cs" />
     <Compile Include="Migrations\202304061154348_InitialOne.designer.cs">
       <DependentUpon>202304061154348_InitialOne.cs</DependentUpon>
@@ -93,6 +94,9 @@
     <Compile Include="StudentData.cs" />
     <Compile Include="StudentInfoContext.cs" />
     <Compile Include="StudentValidation.cs" />
+    <Compile Include="UserAndPassWindow.xaml.cs">
+      <DependentUpon>UserAndPassWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -105,6 +109,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserAndPassWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
