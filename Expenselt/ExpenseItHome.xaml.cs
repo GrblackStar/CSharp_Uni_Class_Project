@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,17 +16,35 @@ using System.Windows.Shapes;
 
 namespace Expenselt
 {
-    public partial class ExpenseItHome : Window
+    public partial class ExpenseItHome : Window, INotifyPropertyChanged
     {
         public List<Person> ExpenseDataSource { get; set; }
-        public DateTime LastChecked { get; set; }
+        //public DateTime LastChecked { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;    // delegate
+        public ObservableCollection<string> PersonsChecked { get; set; }
+
+        private DateTime lastChecked;
+        public DateTime LastChecked
+        {
+            get { return lastChecked; }
+            set
+            {
+                lastChecked = value;
+                // Извикване на PropertyChanged
+                if (PropertyChanged != null)
+                    PropertyChanged(this, new PropertyChangedEventArgs("LastChecked"));
+            }
+        }
+
+
 
         public ExpenseItHome()
         {
             InitializeComponent();
             LastChecked = DateTime.Now;
             this.DataContext = this;
-
+            PersonsChecked = new ObservableCollection<string>();
+            // ObservableCollection
             ExpenseDataSource = new List<Person>()
             {
                 new Person()
@@ -134,12 +154,21 @@ namespace Expenselt
             };
         }
 
+        
+
         private void ViewButton_Click(object sender, RoutedEventArgs e)
         {
             ExpenseReport expenseReport = new ExpenseReport(this.peopleListBox.SelectedItem);
             expenseReport.Height = this.Height;
             expenseReport.Width = this.Width;
             expenseReport.ShowDialog();
+        }
+
+        private void peopleListBox_SelectionChanged_1(object sender,SelectionChangedEventArgs e)
+        {
+            LastChecked = DateTime.Now;
+            //PersonsChecked.Add(peopleListBox.SelectedItem.ToString());
+            PersonsChecked.Add((peopleListBox.SelectedItem as System.Xml.XmlElement).Attributes["Name"].Value);
         }
     }
 }
